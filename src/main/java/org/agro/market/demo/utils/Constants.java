@@ -10,4 +10,6 @@ public interface Constants
 
     String ADMIN_ROLE = "ADMIN";
     String USER_ROLE = "USER";
+    String CLIENT_ROLE = "CLIENT";
+    String PROVIDER_ROLE = "PROVIDER";
 }

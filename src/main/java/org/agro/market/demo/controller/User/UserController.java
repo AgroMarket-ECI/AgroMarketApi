@@ -1,7 +1,5 @@
 package org.agro.market.demo.controller.User;
 
-
-
 import org.agro.market.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,8 +21,6 @@ public class UserController
     {
         this.userService = userService;
     }
-
-    
 
 
 }

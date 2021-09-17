@@ -14,7 +14,6 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
  */
 @EnableWebSecurity
 @EnableGlobalMethodSecurity( securedEnabled = true, jsr250Enabled = true, prePostEnabled = true )
-
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     JwtRequestFilter jwtRequestFilter;
