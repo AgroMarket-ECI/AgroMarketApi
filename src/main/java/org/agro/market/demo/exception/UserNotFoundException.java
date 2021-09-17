@@ -1,6 +1,6 @@
 package org.agro.market.demo.exception;
 
-public class UserNotFfoundException
+public class UserNotFoundException
     extends RuntimeException
 {
 }
