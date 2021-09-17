@@ -1,5 +1,8 @@
 package org.agro.market.demo.repository.document;
 
+import java.util.UUID;
+
+import org.agro.market.demo.controller.product.dto.ProductDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -19,8 +22,17 @@ public class Product {
 		
 	}
 	
-
+	public Product(ProductDto productdto) {
+		id = UUID.randomUUID().toString();
+		this.name = productdto.getName();
+		this.price = productdto.getPrice();
+		this.description = productdto.getDescription();
+		this.supplier = productdto.getSupplier();
+		this.favorite = productdto.isFavorite();
+		this.image = productdto.getImage();
+	}
 	public Product(String name, double price, String description, String supplier, boolean favorite, String image) {
+		id = UUID.randomUUID().toString();
 		this.name = name;
 		this.price = price;
 		this.description = description;
@@ -85,5 +97,7 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
+	
+	
 	
 }
