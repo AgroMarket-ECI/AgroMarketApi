@@ -8,7 +8,9 @@ import org.agro.market.demo.repository.ProductRepository;
 import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class MongoProductService implements ProductService{
 	
 	private final ProductRepository productRepository;
