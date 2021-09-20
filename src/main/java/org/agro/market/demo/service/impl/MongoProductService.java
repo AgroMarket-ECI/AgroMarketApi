@@ -54,9 +54,8 @@ public class MongoProductService implements ProductService{
 
     @Override
     public boolean deleteProductById(String id) {
-        if(productRepository.findById(id).isPresent()){
-            Product product = productRepository.findById(id).get();
-            productRepository.delete(product);
+        if(productRepository.existsById(id)){
+            productRepository.deleteById(id);
             return true;
         }
         return false;
