@@ -19,7 +19,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @RestController
-@RequestMapping( "v1/auth" )
+@RequestMapping( "/v1/auth" )
 public class AuthController {
 
     @Value( "${app.secret}" )

@@ -3,8 +3,7 @@ package org.agro.market.demo.exception;
 import org.agro.market.demo.error.ErrorCodeEnum;
 import org.springframework.http.HttpStatus;
 
-public class ServerErrorResponseDto
-{
+public class ServerErrorResponseDto extends Throwable {
     String message;
 
     ErrorCodeEnum errorCode;
