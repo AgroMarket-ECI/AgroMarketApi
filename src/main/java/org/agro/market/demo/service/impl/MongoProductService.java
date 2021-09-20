@@ -1,5 +1,6 @@
 package org.agro.market.demo.service.impl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.agro.market.demo.controller.product.dto.ProductDto;
@@ -34,6 +35,12 @@ public class MongoProductService implements ProductService{
             throw new ProductNotFoundException();
         }
 	}
+
+	@Override
+    public List<Product> getAllProducts(){
+        return productRepository.findAll();
+    }
+
 	
 	
 

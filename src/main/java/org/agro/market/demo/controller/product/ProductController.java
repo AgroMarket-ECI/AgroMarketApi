@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 @RequestMapping( "/v1/product" )
 public class ProductController {
@@ -19,19 +21,24 @@ public class ProductController {
 	private final ProductService productService;
 
 	public ProductController( @Autowired ProductService productService ){
-	        this.productService = productService;
+	    this.productService = productService;
 	}
 	
 	@PostMapping
     public Product create( @RequestBody ProductDto productDto){
-        return productService.createProduct(productDto);
+	    return productService.createProduct(productDto);
     }
 	
 	@GetMapping("/{id}")
     public Product findProductById( @PathVariable String id){
-        return productService.findProductById(id);
+	    return productService.findProductById(id);
     }
-	
+
+    @GetMapping
+    public List<Product> getAllProducts(){
+	    return productService.getAllProducts();
+    }
+
 	
 	
 	
