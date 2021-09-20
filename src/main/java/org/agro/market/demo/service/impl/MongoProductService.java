@@ -41,7 +41,27 @@ public class MongoProductService implements ProductService{
         return productRepository.findAll();
     }
 
-	
-	
+    @Override
+    public Product updateProductById(ProductDto productDto,String id) {
+        if(productRepository.findById(id).isPresent()){
+            Product product = productRepository.findById(id).get();
+            product.update(productDto);
+            productRepository.save(product);
+            return product;
+        }
+        return null;
+    }
+
+    @Override
+    public boolean deleteProductById(String id) {
+        if(productRepository.findById(id).isPresent()){
+            Product product = productRepository.findById(id).get();
+            productRepository.delete(product);
+            return true;
+        }
+        return false;
+    }
+
+
 
 }

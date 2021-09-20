@@ -41,6 +41,15 @@ public class Product {
 		this.image = image;
 	}
 
+	public void update(ProductDto productDto){
+		this.name = productDto.getName();
+		this.price = productDto.getPrice();
+		this.description = productDto.getDescription();
+		this.supplier = productDto.getSupplier();
+		this.favorite = productDto.isFavorite();
+		this.image = productDto.getImage();
+	}
+
 
 	public String getId() {
 		return id;
