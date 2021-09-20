@@ -18,6 +18,8 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
@@ -54,5 +56,15 @@ public class MongoProductServiceTest {
         Assertions.assertThrows( ProductNotFoundException.class, () -> {
         	productService.findProductById( productId );
         } );
+    }
+    @Test
+    void getAllProducts(){
+        List<Product> products = new ArrayList<>();
+        List<Product> productTets = new ArrayList<>();
+        products.add(new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg"));
+        products.add(new Product( "Ferten Insecticida 500ml", 18.200,"Es para matar plagas en plantas", "Ferten",false,"FertenInsecticida500ml.jpg"));
+        when(repository.findAll()).thenReturn(products);
+        productTets = productService.getAllProducts();
+        Assertions.assertEquals(productTets, products);
     }
 }
