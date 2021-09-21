@@ -70,8 +70,6 @@ public class ProductControllerTest {
         ProductDto thirdProductDto = new ProductDto("Estiércol de caballo", 8.500,"Restaura los niveles de nutrientes", "EDSC",false,"Estiercolcaballo.jpg");
         productsByName.add(new Product(thirdProductDto));
         when( repository.findAll() ).thenReturn( productsByName );
-        //ResponseEntity<List> myResponseEntity = this.restTemplate.getForEntity("http://localhost:" + port + "/v1/product/" + productName, List.class);
-        //LinkedHashMap<String, String> allProductsName = (LinkedHashMap<String, String>) myResponseEntity.getBody();
-        //Assertions.assertTrue(true);
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/v1/product/name/" + productName, List.class).size()).isEqualTo(2);
     }
 }
