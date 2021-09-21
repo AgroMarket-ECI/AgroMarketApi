@@ -54,7 +54,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void getAllProducts(){
+    public void getAllProductsTest(){
         List<Product> products = new ArrayList<>();
         List<Product> productTets = new ArrayList<>();
         products.add(new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg"));
@@ -76,12 +76,11 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void deleteById(){
+    public void deleteProductByIdTest(){
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         String productId = product.getId();
         when(repository.existsById(productId)).thenReturn(true);
         this.restTemplate.delete("http://localhost:" + port + "/v1/product/"+productId);
         verify(repository).deleteById(productId);
     }
-
 }

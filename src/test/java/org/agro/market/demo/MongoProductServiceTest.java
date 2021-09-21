@@ -69,6 +69,16 @@ public class MongoProductServiceTest {
         Assertions.assertEquals(productTets, products);
     }
     @Test
+    void getAllProductsNotFoundTest(){
+        List<Product> products = new ArrayList<>();
+        List<Product> productTets = new ArrayList<>();
+        products.add(new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg"));
+        products.add(new Product( "Ferten Insecticida 500ml", 18.200,"Es para matar plagas en plantas", "Ferten",false,"FertenInsecticida500ml.jpg"));
+        when(repository.findAll()).thenReturn(null);
+        productTets = productService.getAllProducts();
+        Assertions.assertNotEquals(productTets, products);
+    }
+    @Test
     void updateProductByIdTest(){
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         String productId = product.getId();
@@ -79,7 +89,7 @@ public class MongoProductServiceTest {
         Assertions.assertEquals(productDto.getPrice(), product.getPrice());
     }
     @Test
-    void notUpdateProductByIdTest(){
+    void productByIdNotUpdateTest(){
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         String productId = product.getId();
         String productid = "erhwjwreagew";
@@ -89,7 +99,7 @@ public class MongoProductServiceTest {
         Assertions.assertNotEquals(productDto.getName(), product.getName());
     }
     @Test
-    void deleteByIdTest(){
+    void deleteProductByIdTest(){
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         String productId = product.getId();
         when(repository.existsById(productId)).thenReturn(true);
@@ -97,7 +107,7 @@ public class MongoProductServiceTest {
         Assertions.assertEquals(true, delete);
     }
     @Test
-    void notDeleteByIdTest(){
+    void deleteProductByIdNotFoundTest(){
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         String productId = product.getId();
         String productid = "ergsawr3f";
