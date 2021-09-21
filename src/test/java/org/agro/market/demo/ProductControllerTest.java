@@ -73,10 +73,5 @@ public class ProductControllerTest {
         //ResponseEntity<List> myResponseEntity = this.restTemplate.getForEntity("http://localhost:" + port + "/v1/product/" + productName, List.class);
         //LinkedHashMap<String, String> allProductsName = (LinkedHashMap<String, String>) myResponseEntity.getBody();
         //Assertions.assertTrue(true);
-}
-
-    
-   
-
-    
+    }
 }

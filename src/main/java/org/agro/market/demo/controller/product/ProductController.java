@@ -37,8 +37,5 @@ public class ProductController {
     public List<Product> findProductsByname(@PathVariable String name){ return productService.findProductsByname(name);
     }
 
-
-	
-	
 	
 }

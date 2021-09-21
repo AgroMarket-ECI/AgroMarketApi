@@ -3,11 +3,7 @@ package org.agro.market.demo.controller.shoppingcart;
 import org.agro.market.demo.service.ProductService;
 import org.agro.market.demo.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,8 +18,15 @@ public class ShoppingCartController {
 	public ShoppingCartController( @Autowired ShoppingCartService shoppingCartService ){
 	        this.shoppingCartService = shoppingCartService;
 	}
-	
-	
-	
+	//@PutMapping("product/{id}")
+	/*public List<User> putProductInShoppingCart (@RequestBody productDto, @PathVariable String id){
+	 	ProductDto productDto = new ProductDto("Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
+        Product product = new Product(productDto);
+		return userService.putProductInShoppingCart(product, id);
+	}*/
 
+	//@DeleteMapping("product/{id}")
+	/*public Boolean deleteProductFromShoppingCart (@PathVariable String id){
+		return userService.deleteProductFromShoppingCart(id);
+	}*/
 }
