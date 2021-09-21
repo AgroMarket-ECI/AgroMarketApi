@@ -4,8 +4,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.agro.market.demo.controller.auth.LoginDto;
 import org.agro.market.demo.controller.auth.TokenDto;
 import org.agro.market.demo.controller.user.dto.UserDto;
+import org.agro.market.demo.exception.InvalidCredentialsException;
+import org.agro.market.demo.exception.UserNotFoundException;
 import org.agro.market.demo.repository.document.User;
 import org.agro.market.demo.service.UserService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -14,9 +17,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
+import org.springframework.web.client.ResourceAccessException;
 
 import java.util.Date;
+import java.util.Optional;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -38,12 +44,12 @@ public class AuthControllerTest {
     UserService userService;
 
     @Test
-    public void shouldReturnUserAuthenticated() throws Exception{
-        UserDto userDto = new UserDto("marcos.chia@mail.escuelaing.edu.co","La_prueb4","C");
+    public void shouldReturnTokenNotnull() throws Exception {
+        UserDto userDto = new UserDto("marcos.chia@mail.escuelaing.edu.co", "La_prueb4", "C");
         User user = new User(userDto);
         when(userService.findByEmail("marcos.chia@mail.escuelaing.edu.co")).thenReturn(user);
 
-        LoginDto loginDto = new LoginDto("marcos.chia@mail.escuelaing.edu.co","La_prueb4");
+        LoginDto loginDto = new LoginDto("marcos.chia@mail.escuelaing.edu.co", "La_prueb4");
         String url = "http://localhost:" + port + "/v1/auth";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -53,4 +59,21 @@ public class AuthControllerTest {
         TokenDto response = this.restTemplate.postForObject(url, request, TokenDto.class);
         assertNotNull(response);
     }
+    //Rev Exception control
+    @Test
+    public void shouldReturnTokenNull() throws Exception {
+        when(userService.findByEmail("pablo.chia@mail.escuelaing.edu.co")).thenReturn(null);
+
+        LoginDto loginDto = new LoginDto("pablo.chia@mail.escuelaing.edu.co", "s0l");
+        String url = "http://localhost:" + port + "/v1/auth";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String stringObject = mapper.writeValueAsString(loginDto);
+        HttpEntity<String> request = new HttpEntity<>(stringObject, headers);
+
+        Assertions.assertThrows(ResourceAccessException.class, () -> {
+            this.restTemplate.postForObject(url, request, TokenDto.class);
+        });
+    }
+
 }

@@ -13,6 +13,7 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 
@@ -36,7 +37,8 @@ public class UserControllerTest {
     public void shouldReturnUserCreated()
             throws Exception {
         UserDto userDto = new UserDto("marcos.chia@mail.escuelaing.edu.co","La_prueb4","C");
-        this.restTemplate.postForObject("http://localhost:" + port + "/v1/user", userDto, User.class);
+        User user = this.restTemplate.postForObject("http://localhost:" + port + "/v1/user", userDto, User.class);
         verify(userService).create(any(UserDto.class));
+        assertNotNull(user);
     }
 }

@@ -1,14 +1,11 @@
 package org.agro.market.demo.service;
 
 import org.agro.market.demo.controller.user.dto.UserDto;
-import org.agro.market.demo.error.ErrorCodeEnum;
 import org.agro.market.demo.exception.InvalidCredentialsException;
-import org.agro.market.demo.exception.ServerErrorResponseDto;
 import org.agro.market.demo.exception.UserNotFoundException;
 import org.agro.market.demo.repository.UserRepository;
 import org.agro.market.demo.repository.document.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
