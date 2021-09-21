@@ -6,13 +6,15 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
-import javax.management.relation.Role;
 import java.util.*;
+import java.util.Date;
+import java.util.List;
 
 @Document
 public class User {
     @Id
     String id;
+    List<Product> shoppingCart;
 
     @Indexed(unique = true)
     String email;
@@ -27,15 +29,15 @@ public class User {
 
     }
 
+    public String getId() {
+        return id;
+    }
+
     public User(UserDto userDto) {
         email = userDto.getEmail();
         createdAt = new Date();
         roles = new ArrayList<>(Collections.singleton(getRole(userDto.getRol())));
         passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()); //password encryption
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getPasswordHash() {
@@ -56,4 +58,17 @@ public class User {
             throw new InputMismatchException("Invalid user role!");
         }
     }
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public List<Product> getShoppingCart() {
+		return shoppingCart;
+	}
+
+	public void setShoppingCart(List<Product> shoppingCart) {
+		this.shoppingCart = shoppingCart;
+	}
+
 }

@@ -4,6 +4,7 @@ import org.agro.market.demo.controller.user.dto.UserDto;
 import org.agro.market.demo.exception.InvalidCredentialsException;
 import org.agro.market.demo.exception.UserNotFoundException;
 import org.agro.market.demo.repository.UserRepository;
+import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.repository.document.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,5 +44,14 @@ public class UserServiceMongoDB
     @Override
     public List<User> all() {
         return userRepository.findAll();
+    }
+
+    @Override
+    public List<Product> updateShoppingCart(List<Product> products) {
+
+        //User user=obtenerUsuario();
+        //modificarUsuario
+        return products;
+
     }
 }
