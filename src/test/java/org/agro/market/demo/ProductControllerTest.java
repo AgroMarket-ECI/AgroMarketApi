@@ -55,7 +55,7 @@ public class ProductControllerTest {
     }
 
     @Test
-    public void findProductsBynameTest() {
+    public void findProductsByNameTest() {
         String productName = "Insecticida";
         List<Product> productsByName= new ArrayList<>();
         //First product
