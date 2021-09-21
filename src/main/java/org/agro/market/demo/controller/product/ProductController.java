@@ -4,7 +4,7 @@ import org.agro.market.demo.controller.product.dto.ProductDto;
 import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,7 +44,8 @@ public class ProductController {
 		return productService.deleteProductById(id);
 	}
 
-	
-	
+    @GetMapping("/name/{name}")
+    public List<Product> findProductsByname(@PathVariable String name){ return productService.findProductsByname(name);
+    }
 	
 }

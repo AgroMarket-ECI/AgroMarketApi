@@ -21,7 +21,6 @@ import org.agro.market.demo.repository.ProductRepository;
 import org.agro.market.demo.repository.document.Product;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.http.ResponseEntity;
 
 @SpringBootTest( webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
 public class ProductControllerTest {
@@ -46,11 +45,30 @@ public class ProductControllerTest {
     @Test
     public void findProductByIdTest() {
     	String productId = "awae-asd45-1dsad";
-    	ProductDto productDto=new ProductDto("Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
+    	ProductDto productDto = new ProductDto("Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
         Product product = new Product(productDto);
         when( repository.findById(productId) ).thenReturn( Optional.of( product ) );
-        Product prd=this.restTemplate.getForObject("http://localhost:" + port + "/v1/product/awae-asd45-1dsad", Product.class);
-        Assertions.assertEquals( prd, product );
+        Product prd = this.restTemplate.getForObject("http://localhost:" + port + "/v1/product/awae-asd45-1dsad", Product.class);
+        Assertions.assertEquals( prd.getName(), product.getName() );
+    }
+
+    @Test
+    public void findProductsByNameTest() {
+        String productName = "Insecticida";
+        List<Product> productsByName= new ArrayList<>();
+        //First product
+        ProductDto firstProductDto = new ProductDto("Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
+        productsByName.add(new Product(firstProductDto));
+
+        //Second product
+        ProductDto secondProductDto = new ProductDto("Insecticida polivalente", 20.500,"Elimina plagas y ácaros", "CCTR",false,"Insecticidapolivalente.jpg");
+        productsByName.add(new Product(secondProductDto));
+
+        //Thrid product
+        ProductDto thirdProductDto = new ProductDto("Estiércol de caballo", 8.500,"Restaura los niveles de nutrientes", "EDSC",false,"Estiercolcaballo.jpg");
+        productsByName.add(new Product(thirdProductDto));
+        when( repository.findAll() ).thenReturn( productsByName );
+        assertThat(this.restTemplate.getForObject("http://localhost:" + port + "/v1/product/name/" + productName, List.class).size()).isEqualTo(2);
     }
 
     @Test

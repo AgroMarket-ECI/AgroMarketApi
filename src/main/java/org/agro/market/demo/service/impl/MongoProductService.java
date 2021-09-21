@@ -1,5 +1,6 @@
 package org.agro.market.demo.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +29,25 @@ public class MongoProductService implements ProductService{
 
 	@Override
 	public Product findProductById(String id) {
-		Optional<Product> optional = productRepository.findById( id );
+		Optional<Product> optional = productRepository.findById(id);
         if ( optional.isPresent() ){
             return optional.get();
         } else {
             throw new ProductNotFoundException();
         }
 	}
+
+    @Override
+    public List<Product> findProductsByname(String name){
+        List<Product> productsByname = new ArrayList<>();
+        List<Product> allProducts = productRepository.findAll();
+        for (Product product : allProducts) {
+            if (product.getName().contains(name)) {
+                productsByname.add(product);
+            }
+        }
+        return productsByname;
+    }
 
 	@Override
     public List<Product> getAllProducts(){
@@ -60,7 +73,4 @@ public class MongoProductService implements ProductService{
         }
         return false;
     }
-
-
-
 }
