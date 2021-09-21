@@ -43,13 +43,13 @@ public class MongoProductService implements ProductService{
 
     @Override
     public Product updateProductById(ProductDto productDto,String id) {
-        if(productRepository.findById(id).isPresent()){
-            Product product = productRepository.findById(id).get();
+        Product product = null;
+        if(productRepository.existsById(id)){
+            product = productRepository.findById(id).get();
             product.update(productDto);
             productRepository.save(product);
-            return product;
         }
-        return null;
+        return product;
     }
 
     @Override
