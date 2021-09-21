@@ -10,14 +10,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.TestPropertySource;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@TestPropertySource("classpath:test.properties")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class UserControllerTest {
 
@@ -37,8 +37,10 @@ public class UserControllerTest {
     public void shouldReturnUserCreated()
             throws Exception {
         UserDto userDto = new UserDto("marcos.chia@mail.escuelaing.edu.co","La_prueb4","C");
-        User user = this.restTemplate.postForObject("http://localhost:" + port + "/v1/user", userDto, User.class);
+        User user = new User(userDto);
+        when(userService.create(userDto)).thenReturn(user);
+
+        User response = this.restTemplate.postForObject("http://localhost:" + port + "/v1/user", userDto, User.class);
         verify(userService).create(any(UserDto.class));
-        assertNotNull(user);
     }
 }

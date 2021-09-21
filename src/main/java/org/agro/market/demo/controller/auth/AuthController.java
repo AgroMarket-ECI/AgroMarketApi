@@ -39,7 +39,6 @@ public class AuthController {
 
         try {
             User user = userService.findByEmail(loginDto.email);
-
             if (BCrypt.checkpw(loginDto.password, user.getPasswordHash())) {
                 return generateTokenDto(user);
             } else {
