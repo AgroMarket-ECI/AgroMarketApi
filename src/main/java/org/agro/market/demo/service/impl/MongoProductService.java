@@ -24,7 +24,9 @@ public class MongoProductService implements ProductService{
 
 	@Override
 	public Product createProduct(ProductDto productDto) {
-		return productRepository.save(new Product(productDto));
+        Product pr = new Product(productDto);
+        Product rev = productRepository.save(pr);
+		return rev;
 	}
 
 	@Override

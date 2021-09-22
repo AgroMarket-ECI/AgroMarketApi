@@ -1,4 +1,4 @@
-package org.agro.market.demo.service;
+package org.agro.market.demo.service.impl;
 
 import org.agro.market.demo.controller.user.dto.UserDto;
 import org.agro.market.demo.exception.InvalidCredentialsException;
@@ -6,6 +6,7 @@ import org.agro.market.demo.exception.UserNotFoundException;
 import org.agro.market.demo.repository.UserRepository;
 import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.repository.document.User;
+import org.agro.market.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

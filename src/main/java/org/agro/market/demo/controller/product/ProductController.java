@@ -10,42 +10,46 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping( "/v1/product" )
+@RequestMapping("/v1/product")
 public class ProductController {
 
-	private final ProductService productService;
+    private final ProductService productService;
 
-	public ProductController( @Autowired ProductService productService ){
-	    this.productService = productService;
-	}
-	
-	@PostMapping
-    public Product create( @RequestBody ProductDto productDto){
-	    return productService.createProduct(productDto);
+    public ProductController(@Autowired ProductService productService) {
+        this.productService = productService;
     }
-	
-	@GetMapping("/{id}")
-    public Product findProductById( @PathVariable String id){
-	    return productService.findProductById(id);
+
+    @PostMapping
+    public Product create(@RequestBody ProductDto productDto) {
+
+        Product prd = productService.createProduct(productDto);
+        return prd;
+
+    }
+
+    @GetMapping("/{id}")
+    public Product findProductById(@PathVariable String id) {
+        return productService.findProductById(id);
     }
 
     @GetMapping
-    public List<Product> getAllProducts(){
-	    return productService.getAllProducts();
+    public List<Product> getAllProducts() {
+        return productService.getAllProducts();
+    }
+
+    @GetMapping("/name/{name}")
+    public List<Product> findProductsByname(@PathVariable String name) {
+        return productService.findProductsByname(name);
     }
 
     @PutMapping("/{id}")
-	public Product updateProductById(@RequestBody ProductDto productDto, @PathVariable String id){
-		return productService.updateProductById(productDto,id);
-	}
-
-	@DeleteMapping("/{id}")
-	public boolean deleteProductById(@PathVariable String id){
-		return productService.deleteProductById(id);
-	}
-
-    @GetMapping("/name/{name}")
-    public List<Product> findProductsByname(@PathVariable String name){ return productService.findProductsByname(name);
+    public Product updateProductById(@RequestBody ProductDto productDto, @PathVariable String id) {
+        return productService.updateProductById(productDto, id);
     }
-	
+
+    @DeleteMapping("/{id}")
+    public boolean deleteProductById(@PathVariable String id) {
+        return productService.deleteProductById(id);
+    }
+
 }
