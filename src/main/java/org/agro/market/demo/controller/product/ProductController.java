@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
@@ -20,6 +21,7 @@ public class ProductController {
     }
 
     @PostMapping
+    @RolesAllowed("PROVIDER")
     public Product create(@RequestBody ProductDto productDto) {
 
         Product prd = productService.createProduct(productDto);
@@ -43,11 +45,13 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
+    @RolesAllowed("PROVIDER")
     public Product updateProductById(@RequestBody ProductDto productDto, @PathVariable String id) {
         return productService.updateProductById(productDto, id);
     }
 
     @DeleteMapping("/{id}")
+    @RolesAllowed("PROVIDER")
     public boolean deleteProductById(@PathVariable String id) {
         return productService.deleteProductById(id);
     }
