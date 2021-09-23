@@ -1,0 +1,10 @@
+   
+machine:
+  java:
+    version: oraclejdk8
+
+deployment:
+  staging:
+    branch: developer
+    heroku: 
+      appname: agromarket
