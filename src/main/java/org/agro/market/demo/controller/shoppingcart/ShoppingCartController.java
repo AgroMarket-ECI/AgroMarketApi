@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 import org.agro.market.demo.repository.document.Product;
+import org.agro.market.demo.repository.document.User;
 
 @RestController
 @RequestMapping( "/v1/shoppingCart" )
@@ -18,27 +19,35 @@ public class ShoppingCartController {
 	        this.userService = userService;
 	}
 
-	@GetMapping
-	public List<Product> getProductsOfShoppingCart(){
-		//return ShoppingCartService.getProductsOfShoppingCart();
-		return null;
+
+	//@RolesAllowed("CLIENT")
+	@GetMapping("{userId}")
+	public List<Product> getProductsOfShoppingCart(@PathVariable String userId){
+		return userService.getProductsOfShoppingCart(userId);
 	}
 	
-	@PutMapping
-	public List<Product> updateShoppingCart(List<Product> products){
-		return userService.updateShoppingCart(products);
+	
+
+	//@RolesAllowed("CLIENT")
+	@PutMapping("/{userId}")
+	public User updateShoppingCart(@PathVariable String userId,@RequestBody List<Product> products){
+		return userService.updateShoppingCart(userId,products);
+
+
+	}
+
+
+	//@RolesAllowed("CLIENT")
+	@PutMapping("{userId}/product/{productId}")
+	public User putProductInShoppingCart (@PathVariable String userId, @PathVariable String productId){
+		return userService.putProductInShoppingCart(userId, productId);
+	}
+	
+	@DeleteMapping("{userId}/product/{productId}")
+	//@RolesAllowed("CLIENT")
+	public Boolean deleteProductFromShoppingCart (@PathVariable String userId, @PathVariable String productId){
+		return userService.deleteProductFromShoppingCart(userId, productId);
 	}
 	
 
-	/*@PutMapping("product/{id}")
-	/*public List<User> putProductInShoppingCart (@RequestBody productDto, @PathVariable String id){
-	 	ProductDto productDto = new ProductDto("Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
-        Product product = new Product(productDto);
-		return userService.putProductInShoppingCart(product, id);
-	}*/
-
-	/*@DeleteMapping("product/{id}")
-	public Boolean deleteProductFromShoppingCart (@PathVariable String id){
-		return userService.deleteProductFromShoppingCart(id);
-	}*/
 }

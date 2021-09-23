@@ -12,9 +12,9 @@ import java.util.List;
 
 @Document
 public class User {
-    @Id
+	@Id
     String id;
-    List<Product> shoppingCart;
+
 
     @Indexed(unique = true)
     String email;
@@ -24,7 +24,9 @@ public class User {
     String passwordHash;
 
     Date createdAt;
-
+    
+    List<Product> shoppingCart;
+    
     public User() {
 
     }
@@ -38,6 +40,7 @@ public class User {
         createdAt = new Date();
         roles = new ArrayList<>(Collections.singleton(getRole(userDto.getRol())));
         passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()); //password encryption
+        shoppingCart=new ArrayList<>();
     }
 
     public String getPasswordHash() {
@@ -66,9 +69,11 @@ public class User {
 	public List<Product> getShoppingCart() {
 		return shoppingCart;
 	}
-
+	public void update(UserDto userDto){
+        this.email = userDto.getEmail();
+        this.passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+    }
 	public void setShoppingCart(List<Product> shoppingCart) {
 		this.shoppingCart = shoppingCart;
 	}
-
 }

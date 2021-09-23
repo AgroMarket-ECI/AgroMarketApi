@@ -12,23 +12,35 @@ import java.util.List;
 @RequestMapping( "/v1/user" )
 public class UserController
 {
-    private final UserService userService;
+	private final UserService userService;
 
-    public UserController( @Autowired UserService userService )
-    {
+    public UserController( @Autowired UserService userService ) {
         this.userService = userService;
     }
 
     @PostMapping
-    public User create(@RequestBody UserDto userDto )
-    {
-        return userService.create( userDto );
+    public User create(@RequestBody UserDto userDto) {
+        return userService.create(userDto);
     }
 
     @GetMapping
-    public List<User> all()
-    {
-        return userService.all();
+    public List<User> getAll() {
+        return userService.getAll();
+    }
+
+    @GetMapping("/{id}")
+    public User findById(@PathVariable String id) {
+        return userService.findById(id);
+    }
+
+    @PutMapping("/{id}")
+    public User updateById(@RequestBody UserDto userDto, @PathVariable String id) {
+        return userService.updateById(userDto, id);
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteById(@PathVariable String id) {
+        return userService.deleteById(id);
     }
 
 }
