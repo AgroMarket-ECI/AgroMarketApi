@@ -15,7 +15,6 @@ public class User {
 	@Id
     String id;
 
-
     @Indexed(unique = true)
     String email;
 
@@ -51,6 +50,23 @@ public class User {
         return roles;
     }
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public List<Product> getShoppingCart() {
+		return shoppingCart;
+	}
+
+    public void setShoppingCart(List<Product> shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+	public void update(UserDto userDto){
+        this.email = userDto.getEmail();
+        this.passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
+    }
+
     public RoleEnum getRole(String role) {
 
         if (role.equals("C")) {
@@ -62,18 +78,4 @@ public class User {
         }
     }
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public List<Product> getShoppingCart() {
-		return shoppingCart;
-	}
-	public void update(UserDto userDto){
-        this.email = userDto.getEmail();
-        this.passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt());
-    }
-	public void setShoppingCart(List<Product> shoppingCart) {
-		this.shoppingCart = shoppingCart;
-	}
 }

@@ -1,4 +1,4 @@
-package org.agro.market.demo;
+package org.agro.market.demo.controllerTest;
 
 import org.agro.market.demo.controller.auth.LoginDto;
 import org.agro.market.demo.controller.auth.TokenDto;

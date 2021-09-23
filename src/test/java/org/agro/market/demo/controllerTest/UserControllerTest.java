@@ -1,4 +1,4 @@
-package org.agro.market.demo;
+package org.agro.market.demo.controllerTest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.agro.market.demo.controller.user.dto.UserDto;

@@ -12,8 +12,7 @@ public class ProductDto {
 	public ProductDto(){
 		
 	}
-	
-	
+
 	public ProductDto(String name, double price, String description, String supplier, boolean favorite, String image) {
 		super();
 		this.name = name;
@@ -23,7 +22,6 @@ public class ProductDto {
 		this.favorite = favorite;
 		this.image = image;
 	}
-
 
 	public String getName() {
 		return name;
@@ -48,8 +46,5 @@ public class ProductDto {
 	public String getImage() {
 		return image;
 	}
-
-	
-	
 
 }

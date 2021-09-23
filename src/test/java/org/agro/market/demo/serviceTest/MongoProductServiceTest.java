@@ -1,4 +1,4 @@
-package org.agro.market.demo;
+package org.agro.market.demo.serviceTest;
 
 import org.agro.market.demo.controller.product.dto.ProductDto;
 import org.agro.market.demo.exception.ProductNotFoundException;

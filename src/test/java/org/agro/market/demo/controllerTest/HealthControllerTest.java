@@ -1,4 +1,4 @@
-package org.agro.market.demo;
+package org.agro.market.demo.controllerTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

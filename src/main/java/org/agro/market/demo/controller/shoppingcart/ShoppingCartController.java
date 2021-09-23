@@ -9,6 +9,8 @@ import java.util.List;
 import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.repository.document.User;
 
+import javax.annotation.security.RolesAllowed;
+
 @RestController
 @RequestMapping( "/v1/shoppingCart" )
 public class ShoppingCartController {
@@ -19,35 +21,23 @@ public class ShoppingCartController {
 	        this.userService = userService;
 	}
 
-
-	//@RolesAllowed("CLIENT")
-	@GetMapping("{userId}")
-	public List<Product> getProductsOfShoppingCart(@PathVariable String userId){
-		return userService.getProductsOfShoppingCart(userId);
-	}
-	
-	
-
-	//@RolesAllowed("CLIENT")
-	@PutMapping("/{userId}")
-	public User updateShoppingCart(@PathVariable String userId,@RequestBody List<Product> products){
-		return userService.updateShoppingCart(userId,products);
-
-
-	}
-
-
-	//@RolesAllowed("CLIENT")
-	@PutMapping("{userId}/product/{productId}")
+	@PutMapping("/{userId}/product/{productId}")
 	public User putProductInShoppingCart (@PathVariable String userId, @PathVariable String productId){
 		return userService.putProductInShoppingCart(userId, productId);
 	}
+
+	@GetMapping("/{userId}")
+	public List<Product> getProductsOfShoppingCart(@PathVariable String userId){
+		return userService.getProductsOfShoppingCart(userId);
+	}
+
+	@PutMapping("/{userId}")
+	public User updateShoppingCart(@PathVariable String userId,@RequestBody List<Product> products){
+		return userService.updateShoppingCart(userId,products);
+	}
 	
-	@DeleteMapping("{userId}/product/{productId}")
-	//@RolesAllowed("CLIENT")
+	@DeleteMapping("/{userId}/product/{productId}")
 	public Boolean deleteProductFromShoppingCart (@PathVariable String userId, @PathVariable String productId){
 		return userService.deleteProductFromShoppingCart(userId, productId);
 	}
-	
-
 }

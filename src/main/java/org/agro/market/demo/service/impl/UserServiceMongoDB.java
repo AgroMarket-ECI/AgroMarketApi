@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,7 +28,6 @@ public class UserServiceMongoDB
         this.productRepository = productRepository;
     }
 
-    //User (User - Provider)
     @Override
     public User create(UserDto userDto) {
         if (userDto.getRol() != null) {
@@ -48,16 +46,6 @@ public class UserServiceMongoDB
             throw new UserNotFoundException();
         }
     }
- /**   @Override
-    public User findByEmail(String email) throws UserNotFoundException {
-        Optional<User> optionalUser = userRepository.findByEmail(email);
-        if (optionalUser.isPresent()) {
-            return optionalUser.get();
-        } else {
-            throw new UserNotFoundException();
-        }
-    }**/
-
 
     @Override
     public List<User> getAll(){
@@ -74,7 +62,6 @@ public class UserServiceMongoDB
         }
     }
 
-    
     @Override
     public User updateById(UserDto userDto, String id){
         User user = null;
@@ -101,7 +88,6 @@ public class UserServiceMongoDB
         }
         return deleted;
     }
-
 
     //ShoppingCart
     @Override
