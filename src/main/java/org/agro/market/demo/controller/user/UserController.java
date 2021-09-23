@@ -4,7 +4,6 @@ import org.agro.market.demo.controller.user.dto.UserDto;
 import org.agro.market.demo.repository.document.User;
 import org.agro.market.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

@@ -1,10 +1,8 @@
 package org.agro.market.demo;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.agro.market.demo.controller.auth.LoginDto;
 import org.agro.market.demo.controller.auth.TokenDto;
 import org.agro.market.demo.controller.user.dto.UserDto;
-import org.agro.market.demo.exception.InvalidCredentialsException;
 import org.agro.market.demo.repository.document.User;
 import org.agro.market.demo.service.UserService;
 import org.junit.jupiter.api.Assertions;
@@ -14,10 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.http.*;
 import org.springframework.web.client.ResourceAccessException;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.when;
 
