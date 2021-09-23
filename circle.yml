@@ -5,6 +5,6 @@ machine:
 
 deployment:
   staging:
-    branch: developer
+    branch: master
     heroku: 
       appname: agromarket
