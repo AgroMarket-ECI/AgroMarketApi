@@ -9,6 +9,7 @@ AgroMarket, es una aplicación de venta de productos para combatir enfermedades 
 > - Johann Bogotá
 > - Johan Guerrero
 > - Laura Izquierdo
+> - César Ortiz
 > - Yarit Villalobos
 
 #### 🚀 Despliegue en Heroku: [![Heroku](https://img.icons8.com/color/35/000000/heroku.png)](https://agromarketeci.herokuapp.com/)
