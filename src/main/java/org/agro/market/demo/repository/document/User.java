@@ -24,8 +24,6 @@ public class User {
 
     Date createdAt;
     
-    List<Product> shoppingCart;
-    
     public User() {
 
     }
@@ -37,9 +35,8 @@ public class User {
     public User(UserDto userDto) {
         email = userDto.getEmail();
         createdAt = new Date();
-        roles = new ArrayList<>(Collections.singleton(getRole(userDto.getRol())));
+        roles = new ArrayList<>(Collections.singleton(getRole(userDto.getRole())));
         passwordHash = BCrypt.hashpw(userDto.getPassword(), BCrypt.gensalt()); //password encryption
-        shoppingCart=new ArrayList<>();
     }
 
     public String getPasswordHash() {
@@ -53,14 +50,6 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	public List<Product> getShoppingCart() {
-		return shoppingCart;
-	}
-
-    public void setShoppingCart(List<Product> shoppingCart) {
-        this.shoppingCart = shoppingCart;
-    }
 
 	public void update(UserDto userDto){
         this.email = userDto.getEmail();

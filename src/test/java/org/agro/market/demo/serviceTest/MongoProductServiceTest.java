@@ -4,7 +4,7 @@ import org.agro.market.demo.controller.product.dto.ProductDto;
 import org.agro.market.demo.exception.ProductNotFoundException;
 import org.agro.market.demo.repository.ProductRepository;
 import org.agro.market.demo.service.ProductService;
-import org.agro.market.demo.service.impl.MongoProductService;
+import org.agro.market.demo.service.impl.ProductServiceMongoDB;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -31,7 +31,7 @@ public class MongoProductServiceTest {
 
     @BeforeEach()
     public void setup(){
-    	productService = new MongoProductService( repository );
+    	productService = new ProductServiceMongoDB( repository );
     }
 
     @Test

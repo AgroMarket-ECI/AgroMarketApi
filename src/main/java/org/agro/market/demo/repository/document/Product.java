@@ -1,7 +1,5 @@
 package org.agro.market.demo.repository.document;
 
-import java.util.UUID;
-
 import org.agro.market.demo.controller.product.dto.ProductDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,7 +12,8 @@ public class Product {
 	private String name;
 	private double price;
 	private String description;
-	private String supplier;
+	private String idProvider;
+	private final double taxes = 0.19;
 	private boolean favorite;
 	private String image;
 	
@@ -23,20 +22,19 @@ public class Product {
 	}
 	
 	public Product(ProductDto productdto) {
-		id = UUID.randomUUID().toString();
 		this.name = productdto.getName();
 		this.price = productdto.getPrice();
 		this.description = productdto.getDescription();
-		this.supplier = productdto.getSupplier();
+		this.idProvider = productdto.getIdProvider();
 		this.favorite = productdto.isFavorite();
 		this.image = productdto.getImage();
 	}
-	public Product(String name, double price, String description, String supplier, boolean favorite, String image) {
-		id = UUID.randomUUID().toString();
+	
+	public Product(String name, double price, String description, String idProvider, boolean favorite, String image) {
 		this.name = name;
 		this.price = price;
 		this.description = description;
-		this.supplier = supplier;
+		this.idProvider = idProvider;
 		this.favorite = favorite;
 		this.image = image;
 	}
@@ -45,11 +43,14 @@ public class Product {
 		this.name = productDto.getName();
 		this.price = productDto.getPrice();
 		this.description = productDto.getDescription();
-		this.supplier = productDto.getSupplier();
+		this.idProvider = productDto.getIdProvider();
 		this.favorite = productDto.isFavorite();
 		this.image = productDto.getImage();
 	}
 
+	public double calculatePriceWithTaxes(){
+		return (this.price * taxes) + this.price;
+	}
 
 	public String getId() {
 		return id;
@@ -83,12 +84,12 @@ public class Product {
 		this.description = description;
 	}
 
-	public String getSupplier() {
-		return supplier;
+	public String getIdProvider() {
+		return idProvider;
 	}
 
-	public void setSupplier(String supplier) {
-		this.supplier = supplier;
+	public void setIdProvider(String IdProvider) {
+		this.idProvider = idProvider;
 	}
 
 	public boolean isFavorite() {
@@ -106,7 +107,5 @@ public class Product {
 	public void setImage(String image) {
 		this.image = image;
 	}
-	
-	
-	
+
 }

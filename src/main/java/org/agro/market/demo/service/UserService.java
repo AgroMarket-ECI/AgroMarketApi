@@ -15,17 +15,9 @@ public interface UserService
 
     User findById(String id);
 
-	User updateShoppingCart(String idUser, List<Product> products) throws UserNotFoundException;
-
     User findByEmail(String email );
 
     User updateById(UserDto userDto, String id);
 
     boolean deleteById(String id);
-
-    User putProductInShoppingCart(String userId, String productId);
-
-    Boolean deleteProductFromShoppingCart(String userId, String productId);
-
-    List<Product> getProductsOfShoppingCart(String userId);
 }

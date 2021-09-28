@@ -13,11 +13,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MongoProductService implements ProductService{
+public class ProductServiceMongoDB implements ProductService{
 	
 	private final ProductRepository productRepository;
 	   
-    public MongoProductService(@Autowired ProductRepository productRepository )
+    public ProductServiceMongoDB(@Autowired ProductRepository productRepository )
     {
         this.productRepository = productRepository;
     }

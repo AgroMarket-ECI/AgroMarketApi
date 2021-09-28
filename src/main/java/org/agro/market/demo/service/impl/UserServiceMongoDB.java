@@ -6,19 +6,16 @@ import org.agro.market.demo.exception.ProductNotFoundException;
 import org.agro.market.demo.exception.UserNotFoundException;
 import org.agro.market.demo.repository.ProductRepository;
 import org.agro.market.demo.repository.UserRepository;
-import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.repository.document.User;
 import org.agro.market.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UserServiceMongoDB
-        implements UserService {
+public class UserServiceMongoDB implements UserService {
 
 	private final UserRepository userRepository;
     private final ProductRepository productRepository;
@@ -30,7 +27,7 @@ public class UserServiceMongoDB
 
     @Override
     public User create(UserDto userDto) {
-        if (userDto.getRol() != null) {
+        if (userDto.getRole() != null) {
             return userRepository.save(new User(userDto));
         } else {
             throw new InvalidCredentialsException();
@@ -73,13 +70,6 @@ public class UserServiceMongoDB
         return user;
     }
 
-    @Override
-    public User updateShoppingCart(String idUser,List<Product> products) throws UserNotFoundException{
-        User user= (User) findById(idUser);
-        user.setShoppingCart(products);
-        return userRepository.save(user);
-    }
-
     public boolean deleteById(String id) {
         boolean deleted = false;
         if(userRepository.existsById(id)){
@@ -87,41 +77,5 @@ public class UserServiceMongoDB
             deleted =true;
         }
         return deleted;
-    }
-
-    //ShoppingCart
-    @Override
-    public User putProductInShoppingCart(String userId, String productId) {
-        User User = null;
-        if(userRepository.findById(userId).isPresent() && productRepository.findById(productId).isPresent()){
-            User = userRepository.findById(userId).get();
-            List <Product> shoppingCart = User.getShoppingCart();
-            shoppingCart.add(productRepository.findById(productId).get());
-            userRepository.save(User);
-        }
-        return User;
-    }
-
-    @Override
-    public Boolean deleteProductFromShoppingCart(String userId, String productId) {
-        boolean deleted = false;
-        User User = null;
-        if(userRepository.existsById(userId)){
-            User = (User)userRepository.findById(userId).get();
-            List <Product> shoppingCart = User.getShoppingCart();
-            shoppingCart.removeIf(product -> product.getId().equals(productId));
-            userRepository.save(User);
-            deleted = true;
-        }
-        return deleted;
-    }
-
-    public List<Product> getProductsOfShoppingCart(String userId) {
-        List<Product> productList = new ArrayList<>();
-        if(userRepository.existsById(userId)){
-            User user = (User) userRepository.findById(userId).get();
-            productList = user.getShoppingCart();
-        }
-        return productList;
     }
 }

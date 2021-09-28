@@ -5,7 +5,7 @@ public class ProductDto {
 	private String name;
 	private double price;
 	private String description;
-	private String supplier;
+	private String idProvider;
 	private boolean favorite;
 	private String image;
 	
@@ -13,12 +13,12 @@ public class ProductDto {
 		
 	}
 
-	public ProductDto(String name, double price, String description, String supplier, boolean favorite, String image) {
+	public ProductDto(String name, double price, String description, String idProvider, boolean favorite, String image) {
 		super();
 		this.name = name;
 		this.price = price;
 		this.description = description;
-		this.supplier = supplier;
+		this.idProvider = idProvider;
 		this.favorite = favorite;
 		this.image = image;
 	}
@@ -35,8 +35,8 @@ public class ProductDto {
 		return description;
 	}
 
-	public String getSupplier() {
-		return supplier;
+	public String getIdProvider() {
+		return idProvider;
 	}
 
 	public boolean isFavorite() {
