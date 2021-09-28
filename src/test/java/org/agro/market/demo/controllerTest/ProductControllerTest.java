@@ -134,7 +134,7 @@ public class ProductControllerTest {
     @Test
     public void updateProductByIdTest() throws Exception {
         Product product= new Product( "Fertox Insecticida 300ml", 15.900,"Es para matar insectos en plantas", "Fertox",false,"FertoxInsecticida300ml.jpg");
-        String productId = product.getId();
+        String productId = "awae-asd45-1dsad";
         ProductDto productDto = new ProductDto("Ferten Insecticida 500ml", 18.200,"Es para matar plagas en plantas", "Ferten",false,"FertenInsecticida500ml.jpg");
         product.setPrice(18.200);
         when(productService.updateProductById(productDto,productId)).thenReturn(product);
@@ -152,7 +152,7 @@ public class ProductControllerTest {
     @Test
     public void deleteProductByIdTest() {
         Product product = new Product("Fertox Insecticida 300ml", 15.900, "Es para matar insectos en plantas", "Fertox", false, "FertoxInsecticida300ml.jpg");
-        String productId = product.getId();
+        String productId = "awae-asd45-1dsad";
         when(productService.deleteProductById(productId)).thenReturn(true);
 
         HttpHeaders headers = new HttpHeaders();
