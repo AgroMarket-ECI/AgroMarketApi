@@ -8,6 +8,7 @@ import java.util.Date;
 
 @Document
 public class Payment {
+
     @Id
     String idOrder;
     double totalPayment;

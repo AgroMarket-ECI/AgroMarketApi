@@ -1,20 +1,18 @@
 package org.agro.market.demo.repository.document;
 
 import org.springframework.data.annotation.Id;
-
 import java.util.List;
 
-public class Treatments {
+public class Treatment {
     @Id
     private String id;
     private String name;
     private List<Product> products;
 
-    public Treatments(){
-
+    public Treatment(){
     }
 
-    public Treatments(String id, String name, List<Product> products) {
+    public Treatment(String id, String name, List<Product> products) {
         this.id = id;
         this.name = name;
         this.products = products;
