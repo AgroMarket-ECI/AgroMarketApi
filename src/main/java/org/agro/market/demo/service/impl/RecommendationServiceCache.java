@@ -1,5 +1,6 @@
 package org.agro.market.demo.service.impl;
 
+import org.agro.market.demo.repository.ProductRepository;
 import org.agro.market.demo.repository.document.Product;
 import org.agro.market.demo.repository.document.Treatment;
 import org.agro.market.demo.service.RecommendationService;
@@ -18,12 +19,11 @@ public class RecommendationServiceCache implements RecommendationService {
     private static final List<Treatment> treatmentsList = new ArrayList<>();
     private static final List<Product> productsList = new ArrayList<>();
 
-    private final ProductServiceMongoDB productServiceMongoDB;
+    private final ProductRepository productRepository;
 
-    public RecommendationServiceCache(@Autowired ProductServiceMongoDB productServiceMongoDB )
+    public RecommendationServiceCache(@Autowired ProductRepository productRepository )
     {
-        this.productServiceMongoDB = productServiceMongoDB;
-        productsList.addAll(productServiceMongoDB.getAllProducts());
+        this.productRepository = productRepository;
     }
 
     static {
@@ -42,6 +42,7 @@ public class RecommendationServiceCache implements RecommendationService {
 
     @Override
     public List<Treatment> treatmentsByImage(String imageUrl) {
+        productsList.addAll(productRepository.findAll());
         List<Treatment> plantTreatments = new ArrayList<>();
         if (recommendationsList.containsKey(imageUrl)){
             List<String> treatmentsByDisease = recommendationsList.get(imageUrl);
