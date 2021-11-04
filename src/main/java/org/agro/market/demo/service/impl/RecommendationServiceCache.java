@@ -17,7 +17,6 @@ public class RecommendationServiceCache implements RecommendationService {
 
     private static final HashMap<String,List<String>> recommendationsList = new HashMap<>();
     private static final List<Treatment> treatmentsList = new ArrayList<>();
-    private static final List<Product> productsList = new ArrayList<>();
 
     private final ProductRepository productRepository;
 
@@ -42,6 +41,7 @@ public class RecommendationServiceCache implements RecommendationService {
 
     @Override
     public List<Treatment> treatmentsByImage(String imageUrl) {
+        List<Product> productsList = new ArrayList<>();
         productsList.addAll(productRepository.findAll());
         List<Treatment> plantTreatments = new ArrayList<>();
         if (recommendationsList.containsKey(imageUrl)){
@@ -49,7 +49,7 @@ public class RecommendationServiceCache implements RecommendationService {
             for (String idT : treatmentsByDisease){
                 for (Treatment t : treatmentsList){
                     if (idT.equals(t.getId())){
-                        t.setProducts(productsByTreatment(t.getProducts()));
+                        t.setProducts(productsByTreatment(t.getProducts(), productsList));
                         plantTreatments.add(t);
                     }
                 }
@@ -58,7 +58,7 @@ public class RecommendationServiceCache implements RecommendationService {
         return plantTreatments;
     }
 
-    private List<Product> productsByTreatment(List<Product> products) {
+    private List<Product> productsByTreatment(List<Product> products, List<Product> productsList) {
         List<Product> productTreatments = new ArrayList<>();
         for (Product prevP : products){
             for (Product posP : productsList){
