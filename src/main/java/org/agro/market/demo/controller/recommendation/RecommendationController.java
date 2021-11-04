@@ -1,6 +1,7 @@
 package org.agro.market.demo.controller.recommendation;
 
-import org.agro.market.demo.repository.document.Treatment;
+import org.agro.market.demo.repository.model.Disease;
+import org.agro.market.demo.repository.model.Treatment;
 import org.agro.market.demo.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,5 +22,10 @@ public class RecommendationController {
     @GetMapping("/{imageUrl}")
     public List<Treatment> recommendationsByImage(@PathVariable String imageUrl){
         return recommendationService.treatmentsByImage(imageUrl);
+    }
+
+    @GetMapping("/info/{imageUrl}")
+    public Disease infoDiseaseByImage(@PathVariable String imageUrl){
+        return recommendationService.infoDisease(imageUrl);
     }
 }
