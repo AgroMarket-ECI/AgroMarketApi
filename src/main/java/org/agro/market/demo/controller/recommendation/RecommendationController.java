@@ -4,13 +4,12 @@ import org.agro.market.demo.repository.model.Disease;
 import org.agro.market.demo.repository.model.Treatment;
 import org.agro.market.demo.service.RecommendationService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/v1/recommendation")
 public class RecommendationController {
     private final RecommendationService recommendationService;

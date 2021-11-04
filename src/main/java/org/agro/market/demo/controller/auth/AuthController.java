@@ -13,16 +13,14 @@ import static org.agro.market.demo.utils.Constants.TOKEN_DURATION_MINUTES;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
 import java.util.Calendar;
 import java.util.Date;
 
 @RestController
+@CrossOrigin(origins="*")
 @RequestMapping("/v1/auth")
 public class AuthController {
 
