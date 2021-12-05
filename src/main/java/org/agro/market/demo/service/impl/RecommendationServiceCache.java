@@ -52,15 +52,15 @@ public class RecommendationServiceCache implements RecommendationService {
                         "2.\tAgítelo bien y sostenga el rociador a una distancia de 8 pulg. a 12 pulg. (20,32 cm a 30,48 cm) del área a tratar.\n" +
                         "3.\tDespués de 24 horas, utilice el carbendazim para rocear su planta hasta mojar completamente las superficies superiores e inferiores.\n" +
                         "4.\tEvite el riego desde arriba para no estimular el brote ni propagar la enfermedad.\n" +
-                        "5.\tPara tener un tratamiento completo y efectivo use el casafe-v para evitar el crecimiento de maleza. Asegúrese de instruirse con un profesional para proporcionar la cantidad adecuada a su planta.\n", new ArrayList<>(Arrays.asList(new Product("618309a81e87654cb3c36585"), new Product("61830a951e87654cb3c36586"), new Product("61830cec1e87654cb3c36587")))));
+                        "5.\tPara tener un tratamiento completo y efectivo use el casafe-v para evitar el crecimiento de maleza. Asegúrese de instruirse con un profesional para proporcionar la cantidad adecuada a su planta.\n", new ArrayList<>(Arrays.asList(new Product("61a90d1eaa24ecbcbe2c9ce7"), new Product("61a90dbcaa24ecbcbe2c9ce9"), new Product("61a90d7faa24ecbcbe2c9ce8")))));
         treatmentsList.add(new Treatment("2", "treatment2",
                 "1.\tUsar guantes impermeables durante la manipulación y la aplicación.\n" +
                         "2.\tSe recomienda usar el cabrio WG en una o dos aplicaciones con un intervalo de 15 días, con un plazo de seguridad de 100 días y con una dosis de 0,5 Kg/ha.\n" +
                         "3.\tEmpezar el uso de codimurm junto a él cabrio WG.\n" +
                         "4.\tVerter agua en un recipiente con el polvo de codimurm y agitar hasta conseguir la disolución del polvo. Aplicar a dosis de 0.3%-0.4%, limitar la aplicación a un máximo de 6 aplicaciones por periodo de cultivo (con un intervalo entre tratamientos de 7 días).\n" +
-                        "5.\tPara un resultado más efectivo usar el poltix con una dosis a valorar según el desarrollo del hongo. Aconsejamos utilizar una dosis más alta de 40-80 cc/hl durante los periodos de mayor riesgo de ataque y sobre las variedades más sensibles.\n", new ArrayList<>(Arrays.asList(new Product("61830e5a1e87654cb3c36588"), new Product("61830eb51e87654cb3c36589"), new Product("61830f2b1e87654cb3c3658a")))));
-        treatmentsList.add(new Treatment("12", "treatment12", "En elaboración", new ArrayList<>(Arrays.asList(new Product("618310691e87654cb3c3658c"), new Product("618310b61e87654cb3c3658d")))));
-        treatmentsList.add(new Treatment("13", "treatment13", "En elaboración", new ArrayList<>(Arrays.asList(new Product("6183111f1e87654cb3c3658e"), new Product("618311761e87654cb3c3658f")))));
+                        "5.\tPara un resultado más efectivo usar el poltix con una dosis a valorar según el desarrollo del hongo. Aconsejamos utilizar una dosis más alta de 40-80 cc/hl durante los periodos de mayor riesgo de ataque y sobre las variedades más sensibles.\n", new ArrayList<>(Arrays.asList(new Product("61a90e01aa24ecbcbe2c9ceb"), new Product("61a90e79aa24ecbcbe2c9cef"), new Product("61a90e3aaa24ecbcbe2c9ced")))));
+        treatmentsList.add(new Treatment("12", "treatment12", "En elaboración", new ArrayList<>(Arrays.asList(new Product("61a90e3aaa24ecbcbe2c9ced"), new Product("61a90e24aa24ecbcbe2c9cec")))));
+        treatmentsList.add(new Treatment("13", "treatment13", "En elaboración", new ArrayList<>(Arrays.asList(new Product("61a90e5eaa24ecbcbe2c9cee"), new Product("61a90e79aa24ecbcbe2c9cef")))));
     }
 
     @Override
