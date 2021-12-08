@@ -8,4 +8,5 @@ import java.util.List;
 public interface RecommendationService {
     List<Treatment> treatmentsByImage(String imageUrl);
     Disease infoDisease(String imageUrl);
+    Treatment infoDiseaseWithId(String imageUrl, int idRecommendation);
 }
