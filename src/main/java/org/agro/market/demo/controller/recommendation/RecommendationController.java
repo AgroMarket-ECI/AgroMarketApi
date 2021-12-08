@@ -28,8 +28,8 @@ public class RecommendationController {
         return recommendationService.infoDisease(imageUrl);
     }
     
-    @GetMapping("/info/{imageUrl}/{idRecommendation}")
-    public Treatment infoDiseaseByImage(@PathVariable String imageUrl,@PathVariable int idRecommendation){
-        return recommendationService.infoDiseaseWithId(imageUrl,idRecommendation);
+    @GetMapping("/treatment/{idTreatment}")
+    public Treatment TreatmentbyId(@PathVariable int idTreatment){
+        return recommendationService.TreatmentbyId(idTreatment);
     }
 }

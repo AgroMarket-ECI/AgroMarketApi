@@ -105,8 +105,14 @@ public class RecommendationServiceCache implements RecommendationService {
     }
 
 	@Override
-	public Treatment infoDiseaseWithId(String imageUrl, int idRecommendation) {
-		
-		return treatmentsByImage(imageUrl).get(idRecommendation);
+	public Treatment TreatmentbyId(int idTreatment) {
+		for(Treatment treatment:treatmentsList) {
+			if(treatment.getId().equals(idTreatment+"")) {
+				return treatment;
+			}
+		}
+		return null;
 	}
+
+
 }
