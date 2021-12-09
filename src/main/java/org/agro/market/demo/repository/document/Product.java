@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 public class Product {
-	private final double TAX_PERCENTAGE = 0.19;
 	@Id
 	private String id;
 	private String name;
@@ -30,18 +29,18 @@ public class Product {
 		this.price = productdto.getPrice();
 		this.description = productdto.getDescription();
 		this.idProvider = productdto.getIdProvider();
-		this.taxes = TAX_PERCENTAGE;
+		this.taxes = 0.19;
 		this.favorite = productdto.isFavorite();
 		this.image = productdto.getImage();
 	}
-	
+
 	public Product(String name, double price, String description, String idProvider, boolean favorite, String image) {
 		this.name = name;
 		this.price = price;
 		this.description = description;
 		this.idProvider = idProvider;
 		this.favorite = favorite;
-		this.taxes = TAX_PERCENTAGE;
+		this.taxes = 0.19;
 		this.image = image;
 	}
 
@@ -51,7 +50,7 @@ public class Product {
 		this.description = productDto.getDescription();
 		this.idProvider = productDto.getIdProvider();
 		this.favorite = productDto.isFavorite();
-		this.taxes = TAX_PERCENTAGE;
+		this.taxes = 0.19;
 		this.image = productDto.getImage();
 	}
 

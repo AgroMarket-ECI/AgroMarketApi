@@ -59,8 +59,29 @@ public class RecommendationServiceCache implements RecommendationService {
                         "3.\tEmpezar el uso de codimurm junto a él cabrio WG.\n" +
                         "4.\tVerter agua en un recipiente con el polvo de codimurm y agitar hasta conseguir la disolución del polvo. Aplicar a dosis de 0.3%-0.4%, limitar la aplicación a un máximo de 6 aplicaciones por periodo de cultivo (con un intervalo entre tratamientos de 7 días).\n" +
                         "5.\tPara un resultado más efectivo usar el poltix con una dosis a valorar según el desarrollo del hongo. Aconsejamos utilizar una dosis más alta de 40-80 cc/hl durante los periodos de mayor riesgo de ataque y sobre las variedades más sensibles.\n", new ArrayList<>(Arrays.asList(new Product("61a90e01aa24ecbcbe2c9ceb"), new Product("61a90e79aa24ecbcbe2c9cef"), new Product("61a90e3aaa24ecbcbe2c9ced")))));
-        treatmentsList.add(new Treatment("12", "treatment12", "En elaboración", new ArrayList<>(Arrays.asList(new Product("61a90e3aaa24ecbcbe2c9ced"), new Product("61a90e24aa24ecbcbe2c9cec")))));
-        treatmentsList.add(new Treatment("13", "treatment13", "En elaboración", new ArrayList<>(Arrays.asList(new Product("61a90e5eaa24ecbcbe2c9cee"), new Product("61a90e79aa24ecbcbe2c9cef")))));
+        treatmentsList.add(new Treatment("12", "treatment12",
+                "1.\tAplicar el Teldor fungicida preventivamente o al observarse los primeros síntomas de la enfermedad.\n" +
+                "2.\tAplicar al 0.15% con un máximo de 1,5 kg/ha de producto, excepto en cultivos de invernadero en aplicaciones con lanza o pistola, que se aplicará como máximo 1.25 kg/ha.\n" +
+                "3.\tPasada 1 hora de la aplicación del Teldor fungicida, agitar bien el producto de Fordazim fungicida antes de usarlo.\n" +
+                "4.\tHacer una premezcla en poca cantidad de agua. \n" +
+                "5.\tLlenar un recipiente con agua hasta la mitad, agregar la premezcla y completar la cantidad de agua para la dosis recomendada por hectárea que vienen en la ficha técnica del producto.\n" +
+                "6.\tRepetir el tratamiento a diario hasta obtener resultados.\n", new ArrayList<>(Arrays.asList(new Product("61a90e3aaa24ecbcbe2c9ced"), new Product("61a90e24aa24ecbcbe2c9cec")))));
+        treatmentsList.add(new Treatment("13", "treatment13",
+                "1.\tDebido a que el uso de Maneb es más eficaz cuando se utiliza en tratamientos preventivos, se recomienda usarlo al ver los primeros indicios de la enfermedad o cuando las condiciones climáticas favorezcan el establecimiento y desarrollo de este tipo de enfermedades.\n" +
+                "2.\tAplicar el Maneb fungicida en pulverización normal 250 g/hl ó 1,5 - 2,5 kg/ha, especialmente cuando se utilicen pulverizadores de bajo volumen.\n" +
+                "3.\tPara el uso del fungicida Arko se requiere diluir el polvo que este contine en agua y mezclar hasta que quede totalmente homogéneo. \n" +
+                "4.\tRociar el producto sobre la zona afectada y dejar actuar. Repetir el proceso 3 veces por semana.\n", new ArrayList<>(Arrays.asList(new Product("61a90e5eaa24ecbcbe2c9cee"), new Product("61a90e79aa24ecbcbe2c9cef")))));
+        treatmentsList.add(new Treatment("5", "treatment5",
+                "1.\tAgregue 20 g de HTpro DUNE por cada litro de agua.\n" +
+                        "2.\tMezcle totalmente y rocié con pulverizador sobre la hojas.\n" +
+                        "3.\tPasados 30 minutos utilice humus líquido para distribuirlo sobre el suelo de cultivo utilizando una proporción que oscile entre el medio kilo y el kilo por metro cuadrado.\n" +
+                        "4.\tHumus líquido día de por medio durante una semana y notará el cambio increíblemente en sus frutos. No solo serán de mayor tamaño, sino que, además, tendrán mejor sabor.\n", new ArrayList<>(Arrays.asList(new Product("61b181bf02341973a7ef30ec"), new Product("61b1825f02341973a7ef30ed")))));
+
+        treatmentsList.add(new Treatment("6", "treatment6",
+                "1.\tUse guantes impermeables durante la manipulación y la aplicación.\n" +
+                        "2.\tCombinar el azufre en polvo con el fungicida Sercadis para aumentar la eficacia.\n" +
+                        "3.\tEspolvorear la mezcla anterior sobre la planta afectada a temperaturas menores de 28º y con baja humedad.\n" +
+                        "4.\tPara finalizar el tratamiento aplicar el Trichox en suspensión luego de ser dispersado en agua.\n", new ArrayList<>(Arrays.asList(new Product("61b1833202341973a7ef30ee"), new Product("61b1844102341973a7ef30ef"), new Product("61b1849002341973a7ef30f0")))));
     }
 
     @Override
