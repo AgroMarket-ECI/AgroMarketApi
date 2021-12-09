@@ -124,4 +124,16 @@ public class RecommendationServiceCache implements RecommendationService {
         }
         return productTreatments;
     }
+
+	@Override
+	public Treatment TreatmentbyId(int idTreatment) {
+		for(Treatment treatment:treatmentsList) {
+			if(treatment.getId().equals(idTreatment+"")) {
+				return treatment;
+			}
+		}
+		return null;
+	}
+
+
 }

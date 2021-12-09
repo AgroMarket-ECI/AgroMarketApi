@@ -27,4 +27,9 @@ public class RecommendationController {
     public Disease infoDiseaseByImage(@PathVariable String imageUrl){
         return recommendationService.infoDisease(imageUrl);
     }
+    
+    @GetMapping("/treatment/{idTreatment}")
+    public Treatment TreatmentbyId(@PathVariable int idTreatment){
+        return recommendationService.TreatmentbyId(idTreatment);
+    }
 }
